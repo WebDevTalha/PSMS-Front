@@ -11,11 +11,11 @@
 	<meta name="robots" content="" />
 	
 	<!-- DESCRIPTION -->
-	<meta name="description" content="EduChamp : Education HTML Template" />
+	<meta name="description" content="PSMS - Forget Password" />
 	
 	<!-- OG -->
-	<meta property="og:title" content="EduChamp : Education HTML Template" />
-	<meta property="og:description" content="EduChamp : Education HTML Template" />
+	<meta property="og:title" content="PSMS - Forget Password" />
+	<meta property="og:description" content="PSMS : Forget Password" />
 	<meta property="og:image" content="" />
 	<meta name="format-detection" content="telephone=no">
 	
@@ -24,7 +24,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
 	
 	<!-- PAGE TITLE HERE ============================================= -->
-	<title>EduChamp : Education HTML Template </title>
+	<title>PSMS - Forget Password</title>
 	
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,19 +58,11 @@
 		<div class="account-form-inner">
 			<div class="account-container">
 				<div class="heading-bx left">
-					<h2 class="title-head">Sign Up <span>Now</span></h2>
-					<p>Login Your Account <a href="login.html">Click here</a></p>
+					<h2 class="title-head">Forget <span>Password</span></h2>
+					<p>Login Your Account <a href="login.php">Click here</a></p>
 				</div>	
-				<form class="contact-bx">
+				<form class="contact-bx" method="POST" action="">
 					<div class="row placeani">
-						<div class="col-lg-12">
-							<div class="form-group">
-								<div class="input-group">
-									<label>Your Name</label>
-									<input name="dzName" type="text" required="" class="form-control">
-								</div>
-							</div>
-						</div>
 						<div class="col-lg-12">
 							<div class="form-group">
 								<div class="input-group">
@@ -79,23 +71,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-12">
-							<div class="form-group">
-								<div class="input-group"> 
-									<label>Your Password</label>
-									<input name="dzEmail" type="password" class="form-control" required="">
-								</div>
-							</div>
-						</div>
 						<div class="col-lg-12 m-b30">
-							<button name="submit" type="submit" value="Submit" class="btn button-md">Sign Up</button>
-						</div>
-						<div class="col-lg-12">
-							<h6>Sign Up with Social media</h6>
-							<div class="d-flex">
-								<a class="btn flex-fill m-r5 facebook" href="#"><i class="fa fa-facebook"></i>Facebook</a>
-								<a class="btn flex-fill m-l5 google-plus" href="#"><i class="fa fa-google-plus"></i>Google Plus</a>
-							</div>
+							<button name="submit" type="submit" value="Submit" class="btn button-md">Submit</button>
 						</div>
 					</div>
 				</form>
@@ -116,7 +93,7 @@
 <script src="assets/vendors/masonry/masonry.js"></script>
 <script src="assets/vendors/masonry/filter.js"></script>
 <script src="assets/vendors/owl-carousel/owl.carousel.js"></script>
-<script src="assets/js/functions.js"></script>
+<script src="assets/js/scripts.js"></script>
 <script src="assets/js/contact.js"></script>
 <script src='assets/vendors/switcher/switcher.js'></script>
 </body>
