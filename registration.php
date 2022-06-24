@@ -34,6 +34,12 @@ if(isset($_POST['st_submit_btn'])) {
 	else if(empty($st_mobile)){
 		$error = "Mobile Is Requird";
 	}
+	else if(!is_numeric($st_mobile)){
+		$error = "Mobile Number Must Be A Number";
+	}
+	else if(strlen($st_mobile) != 11){
+		$error = "Invalid Mobile Number";
+	}
 	else if($countMobile != 0){
 		$error = "This Mobile Is Already Used";
 	}
@@ -42,6 +48,9 @@ if(isset($_POST['st_submit_btn'])) {
 	}
 	else if(empty($st_father_mobile)){
 		$error = "Father's Mobile Is Requird";
+	}
+	else if(strlen($st_father_mobile) != 11){
+		$error = "Invalid Father's Mobile Number";
 	}
 	else if(empty($st_mother)){
 		$error = "Mother's Name Is Requird";
@@ -55,16 +64,54 @@ if(isset($_POST['st_submit_btn'])) {
 	else if(empty($st_password)){
 		$error = "Password Is Requird";
 	}
+	else if(strlen($st_password) < 6){
+		$error = "Password Must Be More Then 6 Digit!";
+	}
 	else {
 		$date = date("Y-m-d H:i:s");
 
 		$password = SHA1($st_password);
 
-		$statement = $pdo->prepare("INSERT INTO students(name,email,mobile,father_name,father_mobile,mother_name,gender,birthday,address,password,register_date) VALUE(?,?,?,?,?,?,?,?,?,?)");
-		$result = $statement->execute(array($st_name,$st_email,$st_mobile,$st_father,$st_father_mobile,$st_mother,$st_gender,$st_birthday,$st_address,$password,$date));
+		$statement = $pdo->prepare("INSERT INTO students(
+			name,
+			email,
+			mobile,
+			father_name,
+			father_mobile,
+			mother_name,gender,
+			birthday,
+			address,
+			password,
+			register_date
+		) VALUE(?,?,?,?,?,?,?,?,?,?,?)");
+
+		$result = $statement->execute(array(
+			$st_name,
+			$st_email,
+			$st_mobile,
+			$st_father,
+			$st_father_mobile,
+			$st_mother,
+			$st_gender,
+			$st_birthday,
+			$st_address,
+			$password,
+			$date
+		));
 
 		if($result == true){
 			$success = 'Student Registration Successfull!';
+
+			unset($st_name);
+			unset($st_email);
+			unset($st_mobile);
+			unset($st_father);
+			unset($st_father_mobile);
+			unset($st_mother);
+			unset($st_address);
+
+			header('location:login.php');
+
 		} else {
 			$error = 'Student Registration Failed!';
 		}
