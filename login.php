@@ -1,9 +1,57 @@
+<?php
+
+require_once('config.php');
+
+session_start();
+
+if(isset($_POST['st_submit_btn'])) {
+	$st_user = $_POST['st_user'];
+	$st_password = $_POST['st_password'];
+
+	// Validation
+	if(empty($st_user)){
+		$error = "Name Is Requird";
+	}
+	else if(empty($st_password)){
+		$error = "Password Is Requird";
+	}
+	else {
+
+		$password = SHA1($st_password);
+
+		// Find the login user
+		$statement = $pdo->prepare(
+			"SELECT * FROM students WHERE (email=? OR mobile=?) AND password=?"
+		);
+		$statement->execute(array(
+			$st_user,
+			$st_user,
+			$password		
+		));
+		$loginCount = $statement->rowCount();
+		if($loginCount == 1){
+			$userData = $statement->fetchAll(PDO::FETCH_ASSOC);
+			$_SESSION['st_logedin'] = $userData;
+
+			header("location:dashboard/index.php");
+
+		} else {
+			$error = 'Username Or Password is wrong!';
+		}
+	}
+}
+
+if(isset($_SESSION['st_logedin'])){
+	header("location:dashboard/index.php");
+};
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
-
 	<!-- META ============================================= -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,13 +110,23 @@
 					<h2 class="title-head">Login to your <span>Account</span></h2>
 					<p>Don't have an account? <a href="registration.php">Create one here</a></p>
 				</div>	
+				<?php if(isset($error)) :?>
+				<div class="alert alert-danger">
+					<?php echo $error; ?>
+				</div>	
+				<?php endif;?>
+				<?php if(isset($success)) :?>
+				<div class="alert alert-success">
+					<?php echo $success; ?>
+				</div>	
+				<?php endif;?>
 				<form class="contact-bx" method="POST" action="">
 					<div class="row placeani">
 						<div class="col-lg-12">
 							<div class="form-group">
 								<div class="input-group">
 									<label>Your Email or Mobile</label>
-									<input name="st_email_or_Mobile" type="text" class="form-control">
+									<input name="st_user" type="text" class="form-control">
 								</div>
 							</div>
 						</div>

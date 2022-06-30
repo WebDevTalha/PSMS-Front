@@ -110,8 +110,6 @@ if(isset($_POST['st_submit_btn'])) {
 			unset($st_mother);
 			unset($st_address);
 
-			header('location:login.php');
-
 		} else {
 			$error = 'Student Registration Failed!';
 		}
