@@ -21,7 +21,7 @@ if(isset($_POST['st_submit_btn'])) {
 
 		// Find the login user
 		$statement = $pdo->prepare(
-			"SELECT * FROM students WHERE (email=? OR mobile=?) AND password=?"
+			"SELECT id,email,mobile FROM students WHERE (email=? OR mobile=?) AND password=?"
 		);
 		$statement->execute(array(
 			$st_user,
@@ -33,7 +33,17 @@ if(isset($_POST['st_submit_btn'])) {
 			$userData = $statement->fetchAll(PDO::FETCH_ASSOC);
 			$_SESSION['st_logedin'] = $userData;
 
-			header("location:dashboard/index.php");
+			// GET Verify Status
+			$is_email_verified = student('is_email_verified',$_SESSION['st_logedin'][0]['id']);
+			$is_mobile_verified = student('is_mobile_verified',$_SESSION['st_logedin'][0]['id']);
+
+			if($is_email_verified == 1 && $is_mobile_verified == 1){
+				header("location:dashboard/index.php");
+			}
+			else {
+				header("location:verify.php");
+			}
+			
 
 		} else {
 			$error = 'Username Or Password is wrong!';
@@ -42,7 +52,7 @@ if(isset($_POST['st_submit_btn'])) {
 }
 
 if(isset($_SESSION['st_logedin'])){
-	header("location:dashboard/index.php");
+	header("location:verify.php");
 };
 
 

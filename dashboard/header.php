@@ -3,8 +3,15 @@
 require_once("../config.php");
 session_start();
 
+$email_status = student('is_email_verified',$_SESSION['st_logedin'][0]['id']);
+$mobile_status = student('is_mobile_verified',$_SESSION['st_logedin'][0]['id']);
+
 if(!isset($_SESSION['st_logedin'])){
-    header("location:../login.php");
+    header("location:logout.php");
+}
+
+if($email_status == 0){
+    header("location:../verify.php");
 }
 
 
@@ -88,7 +95,7 @@ if(!isset($_SESSION['st_logedin'])){
 				<!-- header left menu start -->
 				<ul class="ttr-header-navigation">
 					<li>
-						<a href="../index.html" class="ttr-material-button ttr-submenu-toggle">HOME</a>
+						<a href="../index.php" class="ttr-material-button ttr-submenu-toggle">HOME</a>
 					</li>
 					<li>
 						<a href="#" class="ttr-material-button ttr-submenu-toggle">QUICK MENU <i class="fa fa-angle-down"></i></a>
@@ -260,7 +267,7 @@ if(!isset($_SESSION['st_logedin'])){
 			<nav class="ttr-sidebar-navi">
 				<ul>
 					<li>
-						<a href="index.html" class="ttr-material-button">
+						<a href="index.php" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-home"></i></span>
 		                	<span class="ttr-label">Dashborad</span>
 		                </a>
