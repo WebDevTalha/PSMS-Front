@@ -15,6 +15,12 @@ if($email_status == 0){
 }
 
 
+$user_id = $_SESSION['st_logedin'][0]['id'];
+
+$profile_photo = student('profile_photo', $user_id);
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +93,7 @@ if($email_status == 0){
 			<!--logo start -->
 			<div class="ttr-logo-box">
 				<div>
-					<a href="index.html" class="ttr-logo">
+					<a href="index.php" class="ttr-logo">
 						<img class="ttr-logo-mobile" alt="" src="assets/images/logo-mobile.png" width="30" height="30">
 						<img class="ttr-logo-desktop" alt="" src="assets/images/logo-white.png" width="160" height="27">
 					</a>
@@ -193,10 +199,14 @@ if($email_status == 0){
 						</div>
 					</li>
 					<li>
-						<a href="#" class="ttr-material-button ttr-submenu-toggle"><span class="ttr-user-avatar"><img alt="" src="assets/images/testimonials/pic3.jpg" width="32" height="32"></span></a>
+						<a href="#" class="ttr-material-button ttr-submenu-toggle"><span class="ttr-user-avatar"><?php if($profile_photo == null){
+							echo '<img alt="" src="assets/uploads/user.png" width="32" height="32">';
+						} else {
+							echo '<img alt="" src="'.$profile_photo.'" width="32" height="32">';
+						} ?> </span></a>
 						<div class="ttr-header-submenu">
 							<ul>
-								<li><a href="user-profile.html">My profile</a></li>
+								<li><a href="profile.php">My profile</a></li>
 								<li><a href="list-view-calendar.html">Activity</a></li>
 								<li><a href="mailbox.html">Messages</a></li>
 								<li><a href="logout.php">Logout</a></li>
