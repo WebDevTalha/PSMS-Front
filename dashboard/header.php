@@ -292,7 +292,7 @@ $profile_photo = student('profile_photo', $user_id);
 		                </a>
 		            </li>
 					<li>
-						<a href="" class="ttr-material-button">
+						<a href="class_routine.php" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-book"></i></span>
 		                	<span class="ttr-label">Class Routine</span>
 		                </a>
