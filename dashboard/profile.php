@@ -22,6 +22,12 @@ $current_class = $result[0]['current_class'];
 $registration_date = $result[0]['register_date'];
 $profile_photo = $result[0]['profile_photo'];
 
+$statement = $pdo->prepare("SELECT * FROM class WHERE id=?");
+$statement->execute(array($current_class));
+$get_class = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 ?>
 <!--Main container start -->
 <main class="ttr-wrapper">
@@ -98,7 +104,11 @@ $profile_photo = $result[0]['profile_photo'];
                             </tr>
                             <tr>
                                 <td><b>Current Calss:</b></td>
-                                <td><?php echo $roll; ?></td>
+                                <td><?php if($current_class != null){
+                                    echo $get_class[0]['class_name'];
+                                } else {
+                                    echo "No Class Registered!";
+                                } ?></td>
                             </tr>
                             <tr>
                                 <td><b>Registration Date:</b></td>

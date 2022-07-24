@@ -110,9 +110,9 @@ $profile_photo = student('profile_photo', $user_id);
 						<a href="#" class="ttr-material-button ttr-submenu-toggle">QUICK MENU <i class="fa fa-angle-down"></i></a>
 						<div class="ttr-header-submenu">
 							<ul>
-								<li><a href="../courses.html">Our Courses</a></li>
-								<li><a href="../event.html">New Event</a></li>
-								<li><a href="../membership.html">Membership</a></li>
+								<li><a href="">Our Courses</a></li>
+								<li><a href="">New Event</a></li>
+								<li><a href="">Membership</a></li>
 							</ul>
 						</div>
 					</li>
@@ -207,8 +207,8 @@ $profile_photo = student('profile_photo', $user_id);
 						<div class="ttr-header-submenu">
 							<ul>
 								<li><a href="profile.php">My profile</a></li>
-								<li><a href="list-view-calendar.html">Activity</a></li>
-								<li><a href="mailbox.html">Messages</a></li>
+								<li><a href="#">Activity</a></li>
+								<li><a href="#">Messages</a></li>
 								<li><a href="logout.php">Logout</a></li>
 							</ul>
 						</div>
@@ -286,60 +286,21 @@ $profile_photo = student('profile_photo', $user_id);
 		                </a>
 		            </li>
 					<li>
-						<a href="courses.html" class="ttr-material-button">
+						<a href="class.php" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-book"></i></span>
-		                	<span class="ttr-label">Courses</span>
+		                	<span class="ttr-label">Class</span>
 		                </a>
 		            </li>
 					<li>
-						<a href="#" class="ttr-material-button">
-							<span class="ttr-icon"><i class="ti-email"></i></span>
-		                	<span class="ttr-label">Mailbox</span>
-		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
-		                </a>
-		                <ul>
-		                	<li>
-		                		<a href="mailbox.html" class="ttr-material-button"><span class="ttr-label">Mail Box</span></a>
-		                	</li>
-		                	<li>
-		                		<a href="mailbox-compose.html" class="ttr-material-button"><span class="ttr-label">Compose</span></a>
-		                	</li>
-							<li>
-		                		<a href="mailbox-read.html" class="ttr-material-button"><span class="ttr-label">Mail Read</span></a>
-		                	</li>
-		                </ul>
-		            </li>
-					<li>
-						<a href="#" class="ttr-material-button">
-							<span class="ttr-icon"><i class="ti-calendar"></i></span>
-		                	<span class="ttr-label">Calendar</span>
-		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
-		                </a>
-		                <ul>
-		                	<li>
-		                		<a href="basic-calendar.html" class="ttr-material-button"><span class="ttr-label">Basic Calendar</span></a>
-		                	</li>
-		                	<li>
-		                		<a href="list-view-calendar.html" class="ttr-material-button"><span class="ttr-label">List View</span></a>
-		                	</li>
-		                </ul>
-		            </li>
-					<li>
-						<a href="bookmark.html" class="ttr-material-button">
-							<span class="ttr-icon"><i class="ti-bookmark-alt"></i></span>
-		                	<span class="ttr-label">Bookmarks</span>
+						<a href="" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-book"></i></span>
+		                	<span class="ttr-label">Class Routine</span>
 		                </a>
 		            </li>
 					<li>
-						<a href="review.html" class="ttr-material-button">
-							<span class="ttr-icon"><i class="ti-comments"></i></span>
-		                	<span class="ttr-label">Review</span>
-		                </a>
-		            </li>
-					<li>
-						<a href="add-listing.html" class="ttr-material-button">
-							<span class="ttr-icon"><i class="ti-layout-accordion-list"></i></span>
-		                	<span class="ttr-label">Add listing</span>
+						<a href="" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-book"></i></span>
+		                	<span class="ttr-label">Class Attendance</span>
 		                </a>
 		            </li>
 					<li>
