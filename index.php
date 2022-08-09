@@ -5,17 +5,10 @@
         <div class="section-area section-sp1 ovpr-dark bg-fix online-cours" style="background-image:url(assets/images/background/bg1.jpg);">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-12 text-center text-white">
-							<h2>Online Courses To Learn</h2>
-							<h5>Own Your Feature Learning New Skills Online</h5>
-							<form class="cours-search">
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="What do you want to learn today?	">
-									<div class="input-group-append">
-										<button class="btn" type="submit">Search</button> 
-									</div>
-								</div>
-							</form>
+						<div class="col-md-12 mb-3 text-center text-white">
+							<h2>Student Results</h2>
+							<h5>Get Your Result Via Online</h5>
+							<a href="result_form.php" class="btn">Results</a>
 						</div>
 					</div>
 					<div class="mw800 m-auto">

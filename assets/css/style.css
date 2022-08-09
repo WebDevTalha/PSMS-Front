@@ -15,6 +15,7 @@
 11. COUNTERUP
 12. FOOTER
 13. INNER CONTENT CSS
+14. result system css
 ======================================
   * END TABLE CONTENT *  
 ======================================
@@ -3355,4 +3356,105 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#391800', end
 		font-size: 24px;
 		margin-bottom: 5px;
 	}
+}
+
+
+
+/* 13. result system css */
+
+.result-body {
+	background-color: #f8f8f8;
+}
+.header-area {
+	background-color: #007814;
+	padding: 6px 30px;
+	border-radius: 10px;
+}
+
+.header-content h1 {
+	font-size: 22px;
+	margin: 0;
+	color: #fff;
+	font-weight: 400;
+}
+
+.header-content h2 {
+	font-size: 14px;
+	margin: 0;
+	color: #fff;
+	font-weight: 300;
+}
+.body-area {
+	padding: 50px;
+	background-color: #fff;
+}
+.body-area h1 {
+	font-size: 24px;
+	text-align: center;
+	font-weight: 400;
+	margin: 0;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #ddd;
+}
+
+.search-print-option {
+	padding: 15px;
+	margin: auto;
+	display: block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.search-print-option a {
+	padding: 6px 13px;
+	font-size: 13px;
+	color: #fff;
+	font-weight: 300;
+	transition: .3s;
+}
+
+.search-print-option a:hover {
+	opacity: .7;
+}
+
+.search-print-option a:first-child {
+	background: #5bc0de;
+	border: 1px solid #46b8da;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.search-print-option a:last-child {
+	background: #5cb85c;
+	border: 1px solid #4cae4c;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.resunt-info-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px 15px;
+	background: #eee;
+}
+
+.resunt-info-head p {
+	margin: 0;
+	font-size: 12px;
+}
+
+.resunt-info-head a {
+	padding: 5px 10px;
+	font-size: 12px;
+}
+.chaptcha{
+	background-image: url(../images/captcha.jpg);
+	background-position: center center;
+	background-size: cover;
+	font-size: 20px;
+	font-weight: 500;
+	user-select: none;
 }
