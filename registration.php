@@ -1,127 +1,3 @@
-<?php 
-
-require_once('config.php');
-
-if(isset($_POST['st_submit_btn'])) {
-	$st_name = $_POST['st_name'];
-	$st_email = $_POST['st_email'];
-	$st_mobile = $_POST['st_mobile'];
-	$st_father = $_POST['st_father'];
-	$st_father_mobile = $_POST['st_father_mobile'];
-	$st_mother = $_POST['st_mother'];
-	$st_gender = $_POST['st_gender'];
-	$st_birthday = $_POST['st_birthday'];
-	$st_address = $_POST['st_address'];
-	$st_password = $_POST['st_password'];
-
-	// Count Mobile And Email
-	$countEmail = pfRowCount('email', $st_email);
-	$countMobile = pfRowCount('mobile', $st_email);
-
-	// Validation
-	if(empty($st_name)){
-		$error = "Name Is Requird";
-	}
-	else if(empty($st_email)){
-		$error = "Email Is Requird";
-	}
-	else if(!filter_var($st_email, FILTER_VALIDATE_EMAIL)){
-		$error = "Email Is Not Valid";
-	}
-	else if($countEmail != 0){
-		$error = "This Email Is Already Used";
-	}
-	else if(empty($st_mobile)){
-		$error = "Mobile Is Requird";
-	}
-	else if(!is_numeric($st_mobile)){
-		$error = "Mobile Number Must Be A Number";
-	}
-	else if(strlen($st_mobile) != 11){
-		$error = "Invalid Mobile Number";
-	}
-	else if($countMobile != 0){
-		$error = "This Mobile Is Already Used";
-	}
-	else if(empty($st_father)){
-		$error = "Father's Name Is Requird";
-	}
-	else if(empty($st_father_mobile)){
-		$error = "Father's Mobile Is Requird";
-	}
-	else if(strlen($st_father_mobile) != 11){
-		$error = "Invalid Father's Mobile Number";
-	}
-	else if(empty($st_mother)){
-		$error = "Mother's Name Is Requird";
-	}
-	else if(empty($st_birthday)){
-		$error = "Birth Date Is Requird";
-	}
-	else if(empty($st_address)){
-		$error = "Address Is Requird";
-	}
-	else if(empty($st_password)){
-		$error = "Password Is Requird";
-	}
-	else if(strlen($st_password) < 6){
-		$error = "Password Must Be More Then 6 Digit!";
-	}
-	else {
-		$date = date("Y-m-d H:i:s");
-
-		$password = SHA1($st_password);
-
-		$statement = $pdo->prepare("INSERT INTO students(
-			name,
-			email,
-			mobile,
-			father_name,
-			father_mobile,
-			mother_name,gender,
-			birthday,
-			address,
-			password,
-			register_date
-		) VALUE(?,?,?,?,?,?,?,?,?,?,?)");
-
-		$result = $statement->execute(array(
-			$st_name,
-			$st_email,
-			$st_mobile,
-			$st_father,
-			$st_father_mobile,
-			$st_mother,
-			$st_gender,
-			$st_birthday,
-			$st_address,
-			$password,
-			$date
-		));
-
-		if($result == true){
-			$success = 'Student Registration Successfull!';
-
-			unset($st_name);
-			unset($st_email);
-			unset($st_mobile);
-			unset($st_father);
-			unset($st_father_mobile);
-			unset($st_mother);
-			unset($st_address);
-
-		} else {
-			$error = 'Student Registration Failed!';
-		}
-
-
-	}
-
-
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -312,8 +188,147 @@ if(isset($_POST['st_submit_btn'])) {
 <script src="assets/vendors/masonry/masonry.js"></script>
 <script src="assets/vendors/masonry/filter.js"></script>
 <script src="assets/vendors/owl-carousel/owl.carousel.js"></script>
+<script src="assets/js/sweetalert.min.js"></script>
 <script src="assets/js/scripts.js"></script>
 <script src="assets/js/contact.js"></script>
+
 </body>
 
 </html>
+
+<?php 
+
+require_once('config.php');
+
+if(isset($_POST['st_submit_btn'])) {
+	$st_name = $_POST['st_name'];
+	$st_email = $_POST['st_email'];
+	$st_mobile = $_POST['st_mobile'];
+	$st_father = $_POST['st_father'];
+	$st_father_mobile = $_POST['st_father_mobile'];
+	$st_mother = $_POST['st_mother'];
+	$st_gender = $_POST['st_gender'];
+	$st_birthday = $_POST['st_birthday'];
+	$st_address = $_POST['st_address'];
+	$st_password = $_POST['st_password'];
+
+	// Count Mobile And Email
+	$countEmail = pfRowCount('email', $st_email);
+	$countMobile = pfRowCount('mobile', $st_email);
+
+	// Validation
+	if(empty($st_name)){
+		$error = "Name Is Requird";
+	}
+	else if(empty($st_email)){
+		$error = "Email Is Requird";
+	}
+	else if(!filter_var($st_email, FILTER_VALIDATE_EMAIL)){
+		$error = "Email Is Not Valid";
+	}
+	else if($countEmail != 0){
+		$error = "This Email Is Already Used";
+	}
+	else if(empty($st_mobile)){
+		$error = "Mobile Is Requird";
+	}
+	else if(!is_numeric($st_mobile)){
+		$error = "Mobile Number Must Be A Number";
+	}
+	else if(strlen($st_mobile) != 11){
+		$error = "Invalid Mobile Number";
+	}
+	else if($countMobile != 0){
+		$error = "This Mobile Is Already Used";
+	}
+	else if(empty($st_father)){
+		$error = "Father's Name Is Requird";
+	}
+	else if(empty($st_father_mobile)){
+		$error = "Father's Mobile Is Requird";
+	}
+	else if(strlen($st_father_mobile) != 11){
+		$error = "Invalid Father's Mobile Number";
+	}
+	else if(empty($st_mother)){
+		$error = "Mother's Name Is Requird";
+	}
+	else if(empty($st_birthday)){
+		$error = "Birth Date Is Requird";
+	}
+	else if(empty($st_address)){
+		$error = "Address Is Requird";
+	}
+	else if(empty($st_password)){
+		$error = "Password Is Requird";
+	}
+	else if(strlen($st_password) < 6){
+		$error = "Password Must Be More Then 6 Digit!";
+	}
+	else {
+		$date = date("Y-m-d H:i:s");
+
+		$password = SHA1($st_password);
+
+		$statement = $pdo->prepare("INSERT INTO students(
+			name,
+			email,
+			mobile,
+			father_name,
+			father_mobile,
+			mother_name,gender,
+			birthday,
+			address,
+			password,
+			register_date
+		) VALUE(?,?,?,?,?,?,?,?,?,?,?)");
+
+		$result = $statement->execute(array(
+			$st_name,
+			$st_email,
+			$st_mobile,
+			$st_father,
+			$st_father_mobile,
+			$st_mother,
+			$st_gender,
+			$st_birthday,
+			$st_address,
+			$password,
+			$date
+		));
+
+		$insert = $pdo->prepare("INSERT INTO notification(
+			type,
+			reg_name
+		 ) VALUES(?,?)");
+		 $insert->execute(array("reg",$st_name));
+
+		if($result == true){
+
+			unset($st_name);
+			unset($st_email);
+			unset($st_mobile);
+			unset($st_father);
+			unset($st_father_mobile);
+			unset($st_mother);
+			unset($st_address);
+			echo "<script>
+				swal({
+				title: 'Success!',
+				text: 'Student Registration Successfull!',
+				icon: 'success',
+				button: 'Ok!',
+				});
+			</script>";
+
+		} else {
+			$error = 'Student Registration Failed!';
+		}
+
+
+	}
+
+
+}
+
+?>

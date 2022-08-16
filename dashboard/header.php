@@ -78,6 +78,41 @@ $profile_photo = student('profile_photo', $user_id);
 	<link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
 	<link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
 	
+<style>
+    .delete_popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    background: #fff;
+    padding: 45px 55px;
+    z-index: 99999;
+    display: none;
+}
+
+.delete_popup p {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.delete_popup span {
+    font-size: 13px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: none;
+}
+</style>
+	
 </head>
 <body class="ttr-opened-sidebar ttr-pinned-sidebar">
 	
@@ -298,32 +333,21 @@ $profile_photo = student('profile_photo', $user_id);
 		                </a>
 		            </li>
 					<li>
-						<a href="" class="ttr-material-button">
-							<span class="ttr-icon"><i class="ti-book"></i></span>
-		                	<span class="ttr-label">Class Attendance</span>
-		                </a>
-		            </li>
-					<li>
-						<a href="#" class="ttr-material-button">
-							<span class="ttr-icon"><i class="ti-user"></i></span>
-		                	<span class="ttr-label">My Profile</span>
-		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
-		                </a>
-		                <ul>
-		                	<li>
-		                		<a href="user-profile.html" class="ttr-material-button"><span class="ttr-label">User Profile</span></a>
-		                	</li>
-		                	<li>
-		                		<a href="teacher-profile.html" class="ttr-material-button"><span class="ttr-label">Teacher Profile</span></a>
-		                	</li>
-		                </ul>
-		            </li>
-		            <li class="ttr-seperate"></li>
-
-					<li>
 						<a href="profile.php" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-user"></i></span>
 		                	<span class="ttr-label">Profile</span>
+		                </a>
+		            </li>
+					<li>
+						<a href="fee_payment.php" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-money"></i></span>
+		                	<span class="ttr-label">Fee Payment</span>
+		                </a>
+		            </li>
+					<li>
+						<a href="payment_history.php" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-time"></i></span>
+		                	<span class="ttr-label">Fee Payment History</span>
 		                </a>
 		            </li>
 					<li>
