@@ -46,6 +46,42 @@
 	<!-- STYLESHEETS ============================================= -->
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
+
+	
+<style>
+    .delete_popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    background: #fff;
+    padding: 45px 55px;
+    z-index: 99999;
+    display: none;
+}
+
+.delete_popup p {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.delete_popup span {
+    font-size: 13px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: none;
+}
+</style>
 	
 </head>
 <body id="bg">
@@ -175,6 +211,18 @@
 		</div>
 	</div>
 </div>
+
+
+<div class="delete_popup">
+    <p class="error_text"></p>
+    <span class="text-sm">  </span>
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3"><a href="#" class="btn btn-success close_btn">Try Again</a></div>
+    </div>
+</div>
+<div class="overlay"></div>
+
+
 <!-- External JavaScripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
@@ -191,6 +239,21 @@
 <script src="assets/js/sweetalert.min.js"></script>
 <script src="assets/js/scripts.js"></script>
 <script src="assets/js/contact.js"></script>
+
+
+<script>
+
+function popupOpen(){
+    $('.delete_popup, .overlay').show(500);
+};
+
+function popupClose(){
+  $('.close_btn').click(function(){
+    $('.delete_popup, .overlay').hide(0);
+  });
+};
+</script>
+
 
 </body>
 
@@ -218,52 +281,116 @@ if(isset($_POST['st_submit_btn'])) {
 
 	// Validation
 	if(empty($st_name)){
-		$error = "Name Is Requird";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('Name Is Requird!');
+		</script>";
 	}
 	else if(empty($st_email)){
-		$error = "Email Is Requird";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('Email Is Requird!');
+		</script>";
 	}
 	else if(!filter_var($st_email, FILTER_VALIDATE_EMAIL)){
-		$error = "Email Is Not Valid";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('Email Is Not Valid!');
+		</script>";
 	}
 	else if($countEmail != 0){
-		$error = "This Email Is Already Used";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('This Email Is Already Used!');
+		</script>";
 	}
 	else if(empty($st_mobile)){
-		$error = "Mobile Is Requird";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('Mobile Is Requird!');
+		</script>";
 	}
 	else if(!is_numeric($st_mobile)){
-		$error = "Mobile Number Must Be A Number";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('Mobile Number Must Be A Number!');
+		</script>";
 	}
 	else if(strlen($st_mobile) != 11){
-		$error = "Invalid Mobile Number";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('Invalid Mobile Number!');
+		</script>";
 	}
 	else if($countMobile != 0){
-		$error = "This Mobile Is Already Used";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('This Mobile Is Already Used!');
+		</script>";
 	}
 	else if(empty($st_father)){
-		$error = "Father's Name Is Requird";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('Father Name Is Requird!');
+		</script>";
 	}
 	else if(empty($st_father_mobile)){
-		$error = "Father's Mobile Is Requird";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('Father Mobile Is Requird!');
+		</script>";
 	}
 	else if(strlen($st_father_mobile) != 11){
-		$error = "Invalid Father's Mobile Number";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('Invalid Father Mobile Number!');
+		</script>";
 	}
 	else if(empty($st_mother)){
-		$error = "Mother's Name Is Requird";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('Mother Name Is Requird!');
+		</script>";
 	}
 	else if(empty($st_birthday)){
-		$error = "Birth Date Is Requird";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('Birth Date Is Requird!');
+		</script>";
 	}
 	else if(empty($st_address)){
-		$error = "Address Is Requird";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('Address Is Requird!');
+		</script>";
 	}
 	else if(empty($st_password)){
-		$error = "Password Is Requird";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('Password Is Requird!');
+		</script>";
 	}
 	else if(strlen($st_password) < 6){
-		$error = "Password Must Be More Then 6 Digit!";
+		echo "<script>
+		popupOpen();
+      popupClose();
+      $('.error_text').text('Password Must Be More Then 6 Digit!');
+		</script>";
 	}
 	else {
 		$date = date("Y-m-d H:i:s");
@@ -322,7 +449,11 @@ if(isset($_POST['st_submit_btn'])) {
 			</script>";
 
 		} else {
-			$error = 'Student Registration Failed!';
+			echo "<script>
+			popupOpen();
+			popupClose();
+			$('.error_text').text('Student Registration Failed!');
+			</script>";
 		}
 
 
