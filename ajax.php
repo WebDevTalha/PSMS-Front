@@ -40,13 +40,17 @@ $getcaptcha_num = substr(str_shuffle($captcha_num), 0, 6);
 
 <?php 
 
+if(isset($_POST['amount'])) : ?>
+
+<?php
+
 // Get Bkash Number Amount
 $user_id = $_POST['user_id'];
 
 $stm5 = $pdo->prepare("SELECT * FROM students WHERE id=?");
 $stm5->execute(array($user_id));
 $student_list = $stm5->fetchAll(PDO::FETCH_ASSOC);
-if(isset($_POST['amount'])) : ?>
+?>
 <div class="row">
        <div class="col-md-6 grid-margin stretch-card offset-md-4">
            <!-- preloader -->
